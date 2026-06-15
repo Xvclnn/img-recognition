@@ -9,7 +9,6 @@ DEMJIH_FORMATUUD = {".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tif", ".tiff", "
 
 
 def convert_image(source_path: Path, destination_dir: Path) -> Path:
-    """Convert one image to RGB JPEG while preserving EXIF orientation."""
     destination_dir.mkdir(parents=True, exist_ok=True)
 
     with Image.open(source_path) as img:
@@ -33,10 +32,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="./assets directory доторх зургуудыг RGB JPEG болгох."
     )
-    parser.add_argument("input_dir", nargs="?", default="raw_assets", help="Эх raw зургуудыг хадгалах directory(default: raw_assets)")
-    parser.add_argument("output_dir", nargs="?", default="assets", help="Хувиргасан JPEG зургуудыг хадгалах directory (default: assets)")   
+    parser.add_argument("input_dir", nargs="?", default="assets", help="Эх raw зургуудыг хадгалах directory(default: raw_assets)")
+    parser.add_argument("output_dir", nargs="?", default="converted_assets", help="Хувиргасан JPEG зургуудыг хадгалах directory (default: assets)")   
     args = parser.parse_args()
-
     pillow_heif.register_heif_opener()
 
     input_dir = Path(args.input_dir)

@@ -1,0 +1,5 @@
+facenet-pytorch
+deepface
+argparse
+Pillow
+pillow-heif
